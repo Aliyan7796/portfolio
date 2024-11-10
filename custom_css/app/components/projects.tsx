@@ -1,12 +1,8 @@
-import image1 from "/public/1.png";
-import image2 from "/public/2.png";
-import image3 from "/public/3.png";
 import { motion } from "framer-motion";
-import { StaticImageData } from "next/image";
 import Image from "next/image";
 
 interface Project {
-  image: StaticImageData;
+  image: string;
   title: string;
   description: string;
   technologies: string[];
@@ -15,21 +11,21 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    image: image3,
+    image: "/1.webp",
     title: "Portfolio",
     description: "Created this personal web portfolio to showcase a variety of projects, skills, and experiences in web development.",
     technologies: ["Next.js", "React.js", "Tailwind CSS"],
     link: "#home"
   },
   {
-    image: image2,
+    image: "/2.webp",
     title: "Resume Builder",
     description: "Resume Builder webpage that allows users to create, customize, and download professional resumes.",
     technologies: ["HTML", "CSS", "TypeScript"],
     link: "https://resume-builder-seven-virid.vercel.app/"
   },
   {
-    image: image1,
+    image: "/3.webp",
     title: "E-Commerce",
     description: "Working on it Full Stack E-Commerce WebSite",
     technologies: ["React", "Next.js", "TypeScript", "TailWind Css"],
@@ -62,9 +58,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <ScrollReveal>
       <div className="project-card">
-        <img
-          src={project.image.src}
-          alt="project-image"
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={500} // Image width (adjust as needed)
+          height={300} // Image height (adjust as needed)
           className="project-image"
           onClick={() => window.open(project.link, "_blank")}
         />
