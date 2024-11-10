@@ -3,6 +3,7 @@ import image2 from "/public/2.png";
 import image3 from "/public/3.png";
 import { motion } from "framer-motion";
 import { StaticImageData } from "next/image";
+import Image from "next/image";
 
 interface Project {
   image: StaticImageData;
