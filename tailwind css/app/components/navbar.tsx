@@ -4,9 +4,13 @@ import { useState } from "react"
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsBehance, BsGithub, BsLinkedin, BsTwitter, BsTwitterX, BsYoutube } from "react-icons/bs"
 
-const Navbar = ({ isDarkMode, toggleTheme }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface NavbarProps {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
 
+const Navbar = ({ isDarkMode, toggleTheme }: NavbarProps) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const menuOpen = () => {
     setIsOpen(!isOpen);

@@ -58,7 +58,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <ScrollReveal>
       <div className="project-card">
-        <Image
+        <img
           src={project.image}
           alt={project.title}
           width={500} // Image width (adjust as needed)
