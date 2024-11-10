@@ -2,7 +2,12 @@ import { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 
-const Navbar = ({ isDarkMode, toggleTheme }) => {
+interface NavbarProps {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
+
+const Navbar = ({ isDarkMode, toggleTheme }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const menuOpen = () => {
@@ -20,12 +25,12 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
         <a href="#contact" className="navbar__menu-item">Contact</a>
       </ul>
       <ul className="navbar__social">
-        <a href="https://pk.linkedin.com/in/aliyanahmedqazi" target="_blank">
+        <a href="https://pk.linkedin.com/in/aliyanahmedqazi" target="_blank" rel="noopener noreferrer">
           <li className="navbar__social-item">
             <BsLinkedin />
           </li>
         </a>
-        <a href="https://github.com/" target="_blank">
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
           <li className="navbar__social-item">
             <BsGithub />
           </li>
@@ -64,12 +69,12 @@ const Navbar = ({ isDarkMode, toggleTheme }) => {
             <a href="#contact" className="navbar__menu-item">Contact</a>
           </ul>
           <ul className="navbar__mobile-social">
-            <a href="https://pk.linkedin.com/in/aliyanahmedqazi" target="_blank">
+            <a href="https://pk.linkedin.com/in/aliyanahmedqazi" target="_blank" rel="noopener noreferrer">
               <li className="navbar__social-item">
                 <BsLinkedin />
               </li>
             </a>
-            <a href="https://github.com" target="_blank">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
               <li className="navbar__social-item">
                 <BsGithub />
               </li>
