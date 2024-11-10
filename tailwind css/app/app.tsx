@@ -7,26 +7,48 @@ import Tech from "./components/tech";
 import Experience from "./components/experience";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  // Load dark mode preference from localStorage or default to false
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("isDarkMode");
+      return savedTheme === "true"; // Return saved theme or default to false
+    }
+    return false;
+  });
+
+  // Toggle dark mode and save to localStorage
   const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-   
+    setIsDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      localStorage.setItem("isDarkMode", newMode.toString()); // Save the theme to localStorage
+      return newMode;
+    });
   };
-  
+
+  // Apply dark class to the body if dark mode is enabled
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   return (
     <>
-      <div className={"fixed -z-10 w-full min-h-screen"} style={{
-          background: isDarkMode
-            ? 'radial-gradient(125% 125% at 50% 20%, rgba(0, 0, 0, 1) 50%, rgba(15, 10, 222, 1) 100%)'
-            :  '',
-        }}></div>
+      <div
+        className={`fixed -z-10 w-full min-h-screen bg-gradient-to-r ${
+          isDarkMode
+            ? "from-black via-black to-indigo-800" // Dark gradient
+            : "from-white via-gray-200 to-indigo-300" // Light gradient
+        }`}
+      ></div>
       <main className="flex flex-col items-center px-4 md:px-8 lg:px-16">
         <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <Hero />
         <Tech />
         <Projects />
-        <Experience/>
+        <Experience />
         <Contact />
       </main>
     </>

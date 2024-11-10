@@ -22,6 +22,11 @@
   background: blue;
 }
 
+/* globals.css */
+:root {
+  --background: #ffffff; /* Example background color */
+  --foreground: #000000; /* Example foreground color */
+}
 
 
 .dark{
